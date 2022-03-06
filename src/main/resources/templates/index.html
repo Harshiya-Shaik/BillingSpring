@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Billing Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Billing List</h1>
+    <a href="new">Create New Billing</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Balance</th>
+                <th>Mobileno</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="billing : ${listBilling}">
+            	<td th:text="${billing.id}">Id</td>
+                <td th:text="${billing.name}">Name</td>
+                <td th:text="${billing.date}">Date</td>
+                <td th:text="${billing.balance}">Balance</td>
+                <td th:text="${billing.mobileno}">Mobileno</td>
+                <td>
+                	<a th:href="@{'/edit/' + ${billing.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${billing.Id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+</body>
+</html>
